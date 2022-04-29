@@ -1,0 +1,14 @@
+{
+  "compilerOptions": {
+    "strict": true,
+    "module": "CommonJS",
+    "moduleResolution": "Node",
+    "lib": ["ES5"],
+    "target": "ES5",
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true
+  },
+  "ts-node": {
+    "files": true
+  }
+}

@@ -1,0 +1,6 @@
+.clasp.json
+appsscript.json
+
+coverage/
+dist/
+node_modules/
