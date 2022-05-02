@@ -1,9 +1,3 @@
-let SPREADSHEET_ID = ""
-
-export function setSpreadsheetId(spreadsheetId: string): void {
-    SPREADSHEET_ID = spreadsheetId
-}
-
 type Key = string
 
 type Value = number | string | boolean | Date
@@ -70,10 +64,10 @@ function setRowById(sheet: GoogleAppsScript.Spreadsheet.Sheet, id: string, value
 export abstract class Table<T extends Record> {
     private readonly sheet: GoogleAppsScript.Spreadsheet.Sheet
 
-    protected constructor(name: string) {
-        const sheet = SpreadsheetApp.openById(SPREADSHEET_ID).getSheetByName(name)
+    protected constructor(spreadsheetId: string, tableName: string) {
+        const sheet = SpreadsheetApp.openById(spreadsheetId).getSheetByName(tableName)
         if (!sheet) {
-            throw new Error(`sheet not found with name: ${name}`)
+            throw new Error(`sheet not found with name: ${tableName}`)
         }
 
         this.sheet = sheet

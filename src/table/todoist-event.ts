@@ -9,7 +9,7 @@ export type TodoistEvent = {
 }
 
 export class TodoistEventTable extends Table<TodoistEvent> {
-    constructor() {
-        super("todoist_event")
+    constructor(spreadsheetId: string) {
+        super(spreadsheetId, "todoist_event")
     }
 }

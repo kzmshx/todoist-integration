@@ -1,4 +1,3 @@
-import { setSpreadsheetId } from "../../lib/table"
 import { TodoistEventTable } from "../../table/todoist-event"
 
 import { ScriptProperties } from "./script-properties"
@@ -11,8 +10,6 @@ declare const global: {
 }
 
 const scriptProperties = PropertiesService.getScriptProperties().getProperties() as ScriptProperties
-
-setSpreadsheetId(scriptProperties.spreadsheetId)
 
 type TodoistEventRequest = {
     event_name: string
@@ -27,7 +24,7 @@ global.doGet = (e: GoogleAppsScript.Events.DoGet): GoogleAppsScript.Content.Text
 global.doPost = (e: GoogleAppsScript.Events.DoPost): GoogleAppsScript.Content.TextOutput => {
     const request: TodoistEventRequest = JSON.parse(e.postData.contents)
 
-    new TodoistEventTable().insert({
+    new TodoistEventTable(scriptProperties.spreadsheetId).insert({
         id: Utilities.getUuid(),
         eventName: request.event_name,
         eventData: JSON.stringify(request.event_data),
