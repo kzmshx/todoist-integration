@@ -14,15 +14,16 @@
   "author": "Kazumasa Hirata",
   "main": "index.js",
   "scripts": {
-    "app:deploy:todoist-listener": "cd src/apps/todoist-listener && webpack && echo y | clasp push",
-    "app:init:todoist-listener": "tools/init.sh src/apps/todoist-listener standalone",
     "eslint": "eslint './**/*.{js,ts,jsx,tsx}'",
     "fix": "npm run prettier -- --write && npm run eslint -- --fix && npm run sort",
     "husky:prepare": "husky install",
     "lint": "npm run prettier -- --list-different && npm run eslint && npm run sort -- --check",
     "prettier": "prettier './**/*.{js,ts,jsx,tsx,json}'",
     "sort": "npx sort-package-json",
-    "test": "jest"
+    "test": "jest",
+    "todoist-listener:build": "wireit",
+    "todoist-listener:deploy": "wireit",
+    "todoist-listener:prepare": "wireit"
   },
   "devDependencies": {
     "@types/google-apps-script": "^1.0.46",
@@ -44,6 +45,29 @@
     "ts-node": "^10.7.0",
     "typescript": "^4.6.3",
     "webpack": "^5.72.0",
-    "webpack-cli": "^4.9.2"
+    "webpack-cli": "^4.9.2",
+    "wireit": "^0.3.1"
+  },
+  "wireit": {
+    "todoist-listener:prepare": {
+      "command": "mkdir -p dist/todoist-listener && cd dist/todoist-listener && clasp create --title todoist-listener --type standalone",
+      "files": [],
+      "output": [
+        "dist/todoist-listener/.clasp.json",
+        "dist/todoist-listener/appsscript.json"
+      ]
+    },
+    "todoist-listener:build": {
+      "command": "webpack -c webpack.config.todoist-listener.ts",
+      "dependencies": [
+        "todoist-listener:prepare"
+      ]
+    },
+    "todoist-listener:deploy": {
+      "command": "cd dist/todoist-listener && clasp push --force",
+      "dependencies": [
+        "todoist-listener:build"
+      ]
+    }
   }
 }

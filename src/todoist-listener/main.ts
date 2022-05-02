@@ -1,6 +1,6 @@
-import { TodoistEventTable } from "../../table/todoist-event"
+import { TodoistEventTable } from "../share/table/todoist-event"
 
-import { ScriptProperties } from "./script-properties"
+import { ScriptProperties } from "./config/script-properties"
 
 export {}
 

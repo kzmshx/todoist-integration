@@ -1,18 +1,17 @@
 import * as path from "path"
 
-import * as CopyPlugin from "copy-webpack-plugin"
 import * as GasPlugin from "gas-webpack-plugin"
 import { Configuration } from "webpack"
 
 const config: Configuration = {
+    target: "web",
     mode: "production",
     entry: {
-        main: path.join(__dirname, "main.ts"),
+        main: path.join(__dirname, "src/todoist-listener/main.ts"),
     },
     output: {
         filename: "[name].js",
-        path: path.join(__dirname, "dist"),
-        clean: true,
+        path: path.join(__dirname, "dist/todoist-listener"),
     },
     module: {
         rules: [
@@ -24,18 +23,9 @@ const config: Configuration = {
         ],
     },
     resolve: {
-        extensions: [".ts", ".js"],
+        extensions: [".ts"],
     },
-    plugins: [
-        new GasPlugin(),
-        new CopyPlugin({
-            patterns: [
-                {
-                    from: path.join(__dirname, "appsscript.json"),
-                },
-            ],
-        }),
-    ],
+    plugins: [new GasPlugin()],
 }
 
 export default config

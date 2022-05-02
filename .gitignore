@@ -1,6 +1,7 @@
 .clasp.json
 appsscript.json
 
+.wireit/
 coverage/
 dist/
 node_modules/
