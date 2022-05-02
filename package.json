@@ -1,14 +1,14 @@
 {
-  "name": "todoist-integration",
+  "name": "todoist-workflow",
   "version": "1.0.0",
   "description": "Subscribe to Todoist events and connect with other services",
-  "homepage": "https://github.com/kzmshx/todoist-integration#readme",
+  "homepage": "https://github.com/kzmshx/todoist-workflow#readme",
   "bugs": {
-    "url": "https://github.com/kzmshx/todoist-integration/issues"
+    "url": "https://github.com/kzmshx/todoist-workflow/issues"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/kzmshx/todoist-integration.git"
+    "url": "git+https://github.com/kzmshx/todoist-workflow.git"
   },
   "license": "MIT",
   "author": "Kazumasa Hirata",
