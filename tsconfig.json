@@ -4,9 +4,7 @@
     "module": "CommonJS",
     "moduleResolution": "Node",
     "lib": ["ES5"],
-    "target": "ES5",
-    "experimentalDecorators": true,
-    "emitDecoratorMetadata": true
+    "target": "ES5"
   },
   "ts-node": {
     "files": true
