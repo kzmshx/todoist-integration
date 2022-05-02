@@ -50,15 +50,15 @@
   },
   "wireit": {
     "todoist-listener:prepare": {
-      "command": "mkdir -p dist/todoist-listener && cd dist/todoist-listener && clasp create --title todoist-listener --type standalone",
+      "command": "cd src/todoist-listener/public && clasp create --title todoist-listener --type standalone --rootDir .",
       "files": [],
       "output": [
-        "dist/todoist-listener/.clasp.json",
-        "dist/todoist-listener/appsscript.json"
+        "src/todoist-listener/public/.clasp.json",
+        "src/todoist-listener/public/appsscript.json"
       ]
     },
     "todoist-listener:build": {
-      "command": "webpack -c webpack.config.todoist-listener.ts",
+      "command": "webpack -c webpack.config.todoist-listener.js",
       "dependencies": [
         "todoist-listener:prepare"
       ]
