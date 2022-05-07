@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/kzmshx/todoist-workflow.git"
+    "url": "https://github.com/kzmshx/todoist-workflow.git"
   },
   "license": "MIT",
   "author": "Kazumasa Hirata",
@@ -21,9 +21,9 @@
     "prettier": "prettier './**/*.{js,ts,jsx,tsx,json}'",
     "sort": "npx sort-package-json",
     "test": "jest",
-    "todoist-listener:build": "wireit",
-    "todoist-listener:deploy": "wireit",
-    "todoist-listener:prepare": "wireit"
+    "todoist:build": "wireit",
+    "todoist:deploy": "wireit",
+    "todoist:prepare": "wireit"
   },
   "devDependencies": {
     "@types/google-apps-script": "^1.0.46",
@@ -49,24 +49,16 @@
     "wireit": "^0.3.1"
   },
   "wireit": {
-    "todoist-listener:prepare": {
-      "command": "cd src/todoist-listener/public && clasp create --title todoist-listener --type standalone --rootDir .",
-      "files": [],
-      "output": [
-        "src/todoist-listener/public/.clasp.json",
-        "src/todoist-listener/public/appsscript.json"
-      ]
+    "todoist:prepare": {
+      "command": "cd src/todoist/public && clasp create --title todoist --type standalone --rootDir ."
     },
-    "todoist-listener:build": {
-      "command": "webpack -c webpack.config.todoist-listener.js",
-      "dependencies": [
-        "todoist-listener:prepare"
-      ]
+    "todoist:build": {
+      "command": "webpack -c webpack.config.todoist.js"
     },
-    "todoist-listener:deploy": {
-      "command": "cd dist/todoist-listener && clasp push --force",
+    "todoist:deploy": {
+      "command": "cd dist/todoist && clasp push --force",
       "dependencies": [
-        "todoist-listener:build"
+        "todoist:build"
       ]
     }
   }

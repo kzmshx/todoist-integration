@@ -58,7 +58,7 @@ function setRowById(sheet: GoogleAppsScript.Spreadsheet.Sheet, id: string, value
         throw new Error(`record not found with id: ${id}`)
     }
 
-    sheet.getRange(rowIndex, 1, 1, sheet.getLastColumn()).setValues([values])
+    sheet.getRange(rowIndex + 2, 1, 1, sheet.getLastColumn()).setValues([values])
 }
 
 export abstract class Table<T extends Record> {
